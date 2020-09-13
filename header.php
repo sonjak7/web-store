@@ -1,5 +1,5 @@
 <?php
- session_start();
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
       <ul>
         <li><a href="index.php">Home</a></li>
         <?php if(isset($_SESSION['email_ID'])) : ?>
-          <li><a href="listRestaurant.php">Products</a></li>
+          <li><a href="products.php">Products</a></li>
           <li><a href="myCart.php">My Cart</a></li>
         <?php endif; ?>
 

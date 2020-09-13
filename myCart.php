@@ -4,7 +4,7 @@
 
 	$email_ID = $_SESSION['email_ID'];
 
-	$query = "SELECT email_ID,product1,product2,product3 FROM cart WHERE cart.email_ID = '$email_ID'";
+	$query = "SELECT product1,product2,product3 FROM cart WHERE cart.email_ID = '$email_ID'";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
