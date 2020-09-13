@@ -9,7 +9,7 @@
     <?php if(isset($_SESSION['email_ID'])) : ?>
       <p>HOME PAGE
       To get in contact email us at: test@email.com</p>
-      <?php echo $_SESSION['email_ID']; ?>
+      <p>Logged in as: <?php echo $_SESSION['email_ID']; ?></p>
     <?php endif; ?>
   </div>
 </section>
