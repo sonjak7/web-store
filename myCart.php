@@ -4,7 +4,7 @@
 
 	$email_ID = $_SESSION['email_ID'];
 
-	$query = "SELECT product1,product2,product3 FROM cart WHERE cart.email_ID = '$email_ID'";
+	$query = "SELECT product1,product2,product3,product4 FROM cart WHERE cart.email_ID = '$email_ID'";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
@@ -23,7 +23,8 @@
 	$total_p1 = $cartArr[1] * $cartArr[2];
 	$total_p2 = $cartArr[3] * $cartArr[4];
 	$total_p3 = $cartArr[5] * $cartArr[6];
-	$grand_total = $total_p1 + $total_p2 + $total_p3;
+	$total_p4 = $cartArr[7] * $cartArr[8];
+	$grand_total = $total_p1 + $total_p2 + $total_p3 + $total_p4;
 
 	// get number of columns in table
 	$fields_num = mysqli_num_fields($result);

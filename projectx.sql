@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2020 at 11:36 PM
+-- Generation Time: Sep 14, 2020 at 01:14 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,16 +34,19 @@ CREATE TABLE `cart` (
   `product2` int(32) NOT NULL,
   `prod2_price` double NOT NULL,
   `product3` int(32) NOT NULL,
-  `prod3_price` double NOT NULL
+  `prod3_price` double NOT NULL,
+  `product4` int(32) NOT NULL,
+  `prod4_price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`email_ID`, `product1`, `prod1_price`, `product2`, `prod2_price`, `product3`, `prod3_price`) VALUES
-('satram', 16, 499.99, 3, 79.99, 2, 550),
-('test', 1, 0, 0, 0, 0, 0);
+INSERT INTO `cart` (`email_ID`, `product1`, `prod1_price`, `product2`, `prod2_price`, `product3`, `prod3_price`, `product4`, `prod4_price`) VALUES
+('satram@gmail.com', 16, 499.99, 3, 79.99, 2, 550, 0, 299),
+('sonjak@gmail.com', 1, 499.99, 2, 79.99, 5, 550, 4, 299),
+('the@the.com', 1, 499.99, 0, 79.99, 0, 550, 0, 299);
 
 -- --------------------------------------------------------
 
@@ -63,8 +66,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`firstname`, `lastname`, `email_ID`, `password`) VALUES
-('Sathya', 'Ram', 'satram', '12345678'),
-('test', 'test', 'test', '12345678');
+('Sathya', 'Ram', 'satram@gmail.com', '12345678'),
+('sanjay', 'ram', 'sonjak@gmail.com', 'test_pass'),
+('test', 'test', 'test', '12345678'),
+('hi', 'bye', 'the@the.com', '123456789');
 
 --
 -- Indexes for dumped tables

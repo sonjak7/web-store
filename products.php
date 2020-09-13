@@ -50,37 +50,37 @@
             <p class="desc_cont">High quality sound output, wireless connection, and noise cancelling functionality</p>
         </div>
 
-        <div class="product" onclick="openDesc('teleDesc')">
+        <div class="product" onclick="openDesc('product3Desc')">
             <img src="product_images/television.png" class="image">
-            <p class="product_name">Television</p>
+            <p class="product_name">product3</p>
             <p class="product_price">$550.00</p>
             <form action="includes/products-inc.php" method="POST">
-                <label for="add_television" class="ask" onclick="noShow()">Quantity: </label>
-                <input id="add_television" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
-                <input type="hidden" name="product_bought" value="television">
+                <label for="add_product3" class="ask" onclick="noShow()">Quantity: </label>
+                <input id="add_product3" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
+                <input type="hidden" name="product_bought" value="product3">
                 <input class="cart" type="submit" name="submit" value="Add to cart" onclick="noShow()">
             </form>
         </div>
-        <div class="description" id="teleDesc">
-            <a class="close" onclick="closeDesc('teleDesc')">&#10006</a>
-            <h1 class="desc_head">Television</h1>
+        <div class="description" id="product3Desc">
+            <a class="close" onclick="closeDesc('product3Desc')">&#10006</a>
+            <h1 class="desc_head">product3</h1>
             <p class="desc_cont">OLED display with 4K resolution and 60fps</p>
         </div>
 
-        <div class="product" onclick="openDesc('phoneDesc')">
+        <div class="product" onclick="openDesc('product4Desc')">
             <img src="product_images/phone.png" class="image">
-            <p class="product_name">Cell phone</p>
+            <p class="product_name">product4</p>
             <p class="product_price">$299.00</p>
             <form action="includes/products-inc.php" method="POST">
-                <label for="add_cell_phone" class="ask" onclick="noShow()">Quantity: </label>
-                <input id="add_cell_phone" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
-                <input type="hidden" name="product_bought" value="cell_phone">
+                <label for="add_cell_product4" class="ask" onclick="noShow()">Quantity: </label>
+                <input id="add_cell_product4" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
+                <input type="hidden" name="product_bought" value="product4">
                 <input class="cart" type="submit" name="submit" value="Add to cart" onclick="noShow()">
             </form>
         </div>
-        <div class="description" id="phoneDesc">
-            <a class="close" onclick="closeDesc('phoneDesc')">&#10006</a>
-            <h1 class="desc_head">Cell Phone</h1>
+        <div class="description" id="product4Desc">
+            <a class="close" onclick="closeDesc('product4Desc')">&#10006</a>
+            <h1 class="desc_head">product4</h1>
             <p class="desc_cont">New iPhone 11 with all the same features as previous models</p>
         </div>
     </div>
