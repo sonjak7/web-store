@@ -37,7 +37,12 @@
 			}
 			else{
 				$query = "INSERT INTO User (email_ID, password, firstname, lastname) VALUES ('$email_ID', '$password', '$firstname', '$lastname')";
-	
+				$cart_query = "INSERT INTO cart (email_ID, product1, prod1_price, product2, prod2_price, product3, prod3_price) VALUES ('$email_ID', '0', '499.99', '0', '79.99', '0', '550')"; 
+				
+				$result = mysqli_query($conn, $cart_query);
+				if(!result){ // This line actually executes insert
+					die("Cart query failed");
+				}
 				if(mysqli_query($conn, $query)){ // This line actually executes insert
 					//echo " Record successfully added";
 					$_SESSION['err5'] = "Pecord successfully added";
