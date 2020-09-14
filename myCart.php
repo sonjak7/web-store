@@ -46,6 +46,38 @@
 			echo "<td>$cell</td>";
 		echo "</tr>\n";
 	}
+	echo "<tr>";
+
+	// $resultQ is same as $result, used to re-loop through products
+	$resultQ = mysqli_query($conn, $query);
+	if (!$resultQ) {
+		die("Query to show fields from table failed");
+	}
+
+	
+	for($x=0; $x<$fields_num; $x++) {
+		$field = mysqli_fetch_field($resultQ);
+
+		// if($field->name == "product1"){
+		// 	$prod_delete = "UPDATE cart SET product1 = 0 WHERE cart.email_ID = '$email_ID'";
+		// }
+		// if($field->name == "product2"){
+		// 	$prod_delete = "UPDATE cart SET product2 = 0 WHERE cart.email_ID = '$email_ID'";
+		// }
+		// if($field->name == "product3"){
+		// 	$prod_delete = "UPDATE cart SET product3 = 0 WHERE cart.email_ID = '$email_ID'";
+		// }
+		// if($field->name == "product4"){
+		// 	$prod_delete = "UPDATE cart SET product4 = 0 WHERE cart.email_ID = '$email_ID'";
+		// }
+		//$result_pd = mysqli_query($conn, $prod_delete);
+		/*if(!$result_pd) {
+			die("Query FAILED");
+		}*/
+		//echo "<td><button type='button' onclick='alert(\"$field->name\")'>Delete</button></td>";
+		$prod_delete = "UPDATE cart SET $field->name = 0 WHERE cart.email_ID = '$email_ID'";
+		echo "<td><button type='button' onclick=mysqli_query($conn, $prod_delete)>Delete</button></td>";
+	}
 
 	mysqli_free_result($result);
 	mysqli_close($conn);
