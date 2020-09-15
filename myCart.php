@@ -55,32 +55,38 @@
 	}
 
 	
-	for($x=0; $x<$fields_num; $x++) {
-		$field = mysqli_fetch_field($resultQ);
+	// for($x=0; $x<$fields_num; $x++) {
+	// 	$field = mysqli_fetch_field($resultQ);
 
-		// if($field->name == "product1"){
-		// 	$prod_delete = "UPDATE cart SET product1 = 0 WHERE cart.email_ID = '$email_ID'";
-		// }
-		// if($field->name == "product2"){
-		// 	$prod_delete = "UPDATE cart SET product2 = 0 WHERE cart.email_ID = '$email_ID'";
-		// }
-		// if($field->name == "product3"){
-		// 	$prod_delete = "UPDATE cart SET product3 = 0 WHERE cart.email_ID = '$email_ID'";
-		// }
-		// if($field->name == "product4"){
-		// 	$prod_delete = "UPDATE cart SET product4 = 0 WHERE cart.email_ID = '$email_ID'";
-		// }
-		//$result_pd = mysqli_query($conn, $prod_delete);
-		/*if(!$result_pd) {
-			die("Query FAILED");
-		}*/
-		//echo "<td><button type='button' onclick='alert(\"$field->name\")'>Delete</button></td>";
-		$prod_delete = "UPDATE cart SET $field->name = 0 WHERE cart.email_ID = '$email_ID'";
-		echo "<td><button type='button' onclick=mysqli_query($conn, $prod_delete)>Delete</button></td>";
-	}
+		// echo "<td><button type='button' onclick='alert(\"$field->name\")'>Delete</button></td>";
+
+		// $prod_delete = "UPDATE cart SET $field->name = 0 WHERE cart.email_ID = '$email_ID'";
+		// $exec_delete = mysqli_query($conn, $prod_delete);
+		// echo "<td><button type='button' onclick='mysqli_query($conn, $prod_delete)'>Delete</button></td>";
+	// }
 
 	mysqli_free_result($result);
 	mysqli_close($conn);
 
 	include_once 'footer.php';
 ?>
+
+<form action="includes/deletes-inc.php" method="POST">
+	<input type="hidden" name="product_deleted" value="product1">
+	<td><input type="submit" name="submit" value="Delete PRODUCT1"></td>
+</form>
+
+<form action="includes/deletes-inc.php" method="POST">
+	<input type="hidden" name="product_deleted" value="product2">
+	<td><input type="submit" name="submit" value="Delete PRODUCT2"></td>
+</form>
+
+<form action="includes/deletes-inc.php" method="POST">
+	<input type="hidden" name="product_deleted" value="product3">
+	<td><input type="submit" name="submit" value="Delete PRODUCT3"></td>
+</form>
+
+<form action="includes/deletes-inc.php" method="POST">
+	<input type="hidden" name="product_deleted" value="product4">
+	<td><input type="submit" name="submit" value="Delete PRODUCT4"></td>
+</form>

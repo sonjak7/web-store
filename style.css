@@ -85,11 +85,11 @@ header .nav-login form button{
   height: 30px;
   margin-right: 10px;
   border: none;
-  background-color: #white;
+  background-color: white;
   font-family: sans-serif;
   font-size: 14px;
   color: black;
-  cursor: pointer
+  cursor: pointer;
 }
 
 header .nav-login form button:hover{
