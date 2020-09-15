@@ -54,17 +54,6 @@
 		die("Query to show fields from table failed");
 	}
 
-	
-	// for($x=0; $x<$fields_num; $x++) {
-	// 	$field = mysqli_fetch_field($resultQ);
-
-		// echo "<td><button type='button' onclick='alert(\"$field->name\")'>Delete</button></td>";
-
-		// $prod_delete = "UPDATE cart SET $field->name = 0 WHERE cart.email_ID = '$email_ID'";
-		// $exec_delete = mysqli_query($conn, $prod_delete);
-		// echo "<td><button type='button' onclick='mysqli_query($conn, $prod_delete)'>Delete</button></td>";
-	// }
-
 	mysqli_free_result($result);
 	mysqli_close($conn);
 
@@ -73,20 +62,20 @@
 
 <form action="includes/deletes-inc.php" method="POST">
 	<input type="hidden" name="product_deleted" value="product1">
-	<td><input type="submit" name="submit" value="Delete PRODUCT1"></td>
+	<td><input type="submit" name="submit" value="Delete" class="manage_cart"></td>
 </form>
 
 <form action="includes/deletes-inc.php" method="POST">
 	<input type="hidden" name="product_deleted" value="product2">
-	<td><input type="submit" name="submit" value="Delete PRODUCT2"></td>
+	<td><input type="submit" name="submit" value="Delete" class="manage_cart"></td>
 </form>
 
 <form action="includes/deletes-inc.php" method="POST">
 	<input type="hidden" name="product_deleted" value="product3">
-	<td><input type="submit" name="submit" value="Delete PRODUCT3"></td>
+	<td><input type="submit" name="submit" value="Delete" class="manage_cart"></td>
 </form>
 
 <form action="includes/deletes-inc.php" method="POST">
 	<input type="hidden" name="product_deleted" value="product4">
-	<td><input type="submit" name="submit" value="Delete PRODUCT4"></td>
+	<td><input type="submit" name="submit" value="Delete" class="manage_cart"></td>
 </form>
