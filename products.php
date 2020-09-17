@@ -2,7 +2,7 @@
   include_once 'header.php'
 ?>
 
-<h1 id="title">All Products</h1>
+<h1>All Products</h1>
 
 <div id="all">
     

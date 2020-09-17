@@ -6,7 +6,7 @@
 
 body{
   margin: 0px;
-  background-color: #ccc;
+  background-color: rgb(233, 233, 233);
   background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -47,7 +47,9 @@ header nav ul li a{
 
 header nav ul li a:hover{
   /*text-decoration: underline;*/
-  background-color: rgb(19, 133, 34);
+  background-color: rgb(43, 128, 54);
+  border-radius: 5%;
+  transition: 400ms;
 }
 
 header .nav-login{
@@ -174,8 +176,12 @@ h5{
   background-color: rgb(50, 30, 200);
 }
 
+.loginout{
+  border-radius: 8%;
+}
+
 h1{
-  color: white;
+  color: black;
   font-size: 250%;
   text-align: center;
 }
@@ -199,10 +205,10 @@ h1{
 
 table {
 color: #333;
-width: 650px;
+width: 75%;
 border-collapse:
 collapse; border-spacing: 0;
-margin: 0 auto;
+margin: auto;
 }
 
 td, th {
@@ -227,7 +233,7 @@ tr:first-child td{
 }
 
 tr:nth-child(even) td{
-  background: #F1F1F1;
+  background: #f0efef;
 }
 
 tr:nth-child(odd) td{
@@ -236,15 +242,6 @@ tr:nth-child(odd) td{
 
 form{
   color: white;
-}
-
-#title{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 100;
-  font-size: 45px;
-  text-decoration: underline;
-  left: 5%;
-  color: black;
 }
 
 #all{
@@ -290,12 +287,12 @@ form{
 }
 
 .manage_cart{
-  width: 60%;
+  width: 50%;
   background-color: rgb(0, 148, 59);
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: medium;
-  padding: 4%;
+  padding: 5%;
   margin: 3%;
   border: none;
   border-radius: 50px;
@@ -303,11 +300,15 @@ form{
 }
 
 .manage_cart:hover{
-  background-color: rgb(13, 110, 26);
+  background-color: rgb(43, 128, 54);
+}
+
+.delete_cell{
+  background-color: rgb(233, 233, 233) !important;
 }
 
 .quant{
-  width: 50px;
+  width: 30px;
   border: 1px solid lightgrey;
   border-radius: 5px;
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
   <title></title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
           /*Show logout button when logged in*/
           if(isset($_SESSION['email_ID'])){
             echo '<form action="includes/logout-inc.php" method="POST">
-                  <button type="submit" name="submit">Logout</button>
+                  <button type="submit" name="submit" class="loginout">Logout</button>
                   </form>';
           }
           /*Else show login button*/
@@ -34,7 +34,7 @@
             echo '<form action="includes/login-inc.php" method="POST">
                   <input type="text" name="email_ID" placeholder="email_ID">
                   <input type="password" name="password" placeholder="password">
-                  <button type="submit" name="submit">Login</button>
+                  <button type="submit" name="submit" class="loginout">Login</button>
                   </form>
                   <a href="signup.php">Sign Up</a>
                   <a href="listusers.php">List Users</a>';
