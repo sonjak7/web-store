@@ -76,8 +76,6 @@
 </div>
 
 <script src="products_script.js"></script>
-
-
 <?php
   include_once 'footer.php'
 ?>
