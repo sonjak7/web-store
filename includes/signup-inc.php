@@ -10,57 +10,76 @@
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
 
 		if($email_ID == NULL || $firstname == NULL || $lastname == NULL || $password == NULL){
-			$_SESSION['err1'] = "Empty Input! Please enter all the fields";
-			//echo "<script type='text/javascript'>alert('$mess1);</script>";
-      		header("Location: ../signup.php");
+			$message_status = "Empty inputs";
+        	echo "<script type='text/javascript'>alert('$message_status');</script>";
+        	echo "<script type='text/javascript'> document.location = '../signup.php'; </script>";
       		exit();
 		}
 		else if(strlen($password) < 8){ // Make sure password is atleast 8 chars
-			$_SESSION['err2'] = "Password is less than 8 characters";
-			//echo "<script type='text/javascript'>alert('$_SESSION['err1']');</script>";
-			//echo " Password is less than 8 characters";
-			header("Location: ../signup.php");
-			exit();
+			$message_status = "Password is less than 8 characters";
+        	echo "<script type='text/javascript'>alert('$message_status');</script>";
+        	echo "<script type='text/javascript'> document.location = '../signup.php'; </script>";
+      		exit();
 		}
 		else{
-			/*This statement gets queryed in db*/
-			$sql = "SELECT * FROM User WHERE email_ID='$email_ID'";
-			//Check in db
-			$result = mysqli_query($conn, $sql);
-			if($row = mysqli_fetch_assoc($result)){ // Checks table data
-				//$message = "email_ID already taken";
-				$_SESSION['err3'] = "email_ID already taken";
-				//echo "<script type='text/javascript'>alert('$message');</script>";
-				//echo "email_ID already taken";
-				header("Location: ../signup.php");
+			//Check to see if user already exists
+			$query = "SELECT * FROM User WHERE email_ID=?";
+			$stmt = mysqli_stmt_init($conn); //Creating param query
+			mysqli_stmt_prepare($stmt, $query);
+			mysqli_stmt_bind_param($stmt, "s", $email_ID);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			$resultCheck = mysqli_num_rows($result);
+			if($resultCheck != 0){
+				$message_status = "User_ID already exists";
+				echo "<script type='text/javascript'>alert('$message_status');</script>";
+				echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
 				exit();
 			}
 			else{
-				$query = "INSERT INTO User (email_ID, password, firstname, lastname) VALUES ('$email_ID', '$password', '$firstname', '$lastname')";
-				$cart_query = "INSERT INTO cart (email_ID, product1, prod1_price, product2, prod2_price, product3, prod3_price) VALUES ('$email_ID', '0', '499.99', '0', '79.99', '0', '550')"; 
-				
-				$result = mysqli_query($conn, $cart_query);
-				if(!result){ // This line actually executes insert
-					die("Cart query failed");
-				}
-				if(mysqli_query($conn, $query)){ // This line actually executes insert
-					//echo " Record successfully added";
-					$_SESSION['err5'] = "Pecord successfully added";
-					header("Location: ../signup.php");
+				$password = $password . $salt; //Salting the password
+				$password = hash('sha256', $password);
+
+				$query = "INSERT INTO User (email_ID, password, firstname, lastname) VALUES (?, ?, ?, ?)"; 
+				$stmt = mysqli_stmt_init($conn); //Creating param query
+				mysqli_stmt_prepare($stmt, $query);
+				mysqli_stmt_bind_param($stmt, "ssss", $email_ID, $password, $firstname, $lastname);
+				if(!(mysqli_stmt_execute($stmt))){
+					$message_status = "Creating new user failed";
+					echo "<script type='text/javascript'>alert('$message_status');</script>";
+					echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
 					exit();
 				}
 				else{
-					//echo "ERROR: Could not able to execute $query. " . mysqli_error($conn1);
-					$_SESSION['err4'] = "Error: Can't connect";
-					//echo " ERROR";
-					header("Location: ../signup.php");
+					$message = "New user successfully added";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+				}
+				
+				$q = 0;
+				$p1 = 499.99;
+				$p2 = 79.99;
+				$p3 = 550;
+
+				$cart_query = "INSERT INTO cart (email_ID, product1, prod1_price, product2, prod2_price, product3, prod3_price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				$stmt = mysqli_stmt_init($conn); //Creating param query
+				mysqli_stmt_prepare($stmt, $cart_query);
+				mysqli_stmt_bind_param($stmt, "sssssss", $email_ID, $q, $p1, $q, $p2, $q, $p3);
+				if(!(mysqli_stmt_execute($stmt))){
+					$message_status = "Creating new cart failed";
+					echo "<script type='text/javascript'>alert('$message_status');</script>";
+					echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
 					exit();
+				}
+				else{
+					//$message = "New cart successfully added";
+					//echo "<script type='text/javascript'>alert('$message');</script>";
+					//echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
 				}
 			}	
 		}
 	}
 	else{
-		$_SESSION['err6'] = "Normal";
 		header("Location: ../signup.php");
 		exit();
 	}	
