@@ -17,7 +17,7 @@
       exit();
     }
     else{
-      $query = "SELECT email_ID FROM User WHERE email_ID=? AND password=?";
+      $query = "SELECT email_ID, firstname FROM User WHERE email_ID=? AND password=?";
       $stmt = mysqli_stmt_init($conn); //Creating param query
       mysqli_stmt_prepare($stmt, $query);
       mysqli_stmt_bind_param($stmt, "ss", $email_ID, $password);
@@ -33,6 +33,8 @@
       else{
         if($finalrow = mysqli_fetch_assoc($result)){ //Used to switch to page with logged-in user
             $_SESSION['email_ID'] = $finalrow['email_ID'];
+            $_SESSION['firstname'] = $finalrow['firstname'];
+      
             header("Location: ../index.php?login==success");
         }
       }

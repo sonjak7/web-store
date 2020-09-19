@@ -18,6 +18,7 @@
         <?php if(isset($_SESSION['email_ID'])) : ?>
           <li><a href="products.php">Products</a></li>
           <li><a href="myCart.php">My Cart</a></li>
+          <li><a href="reviews.php">Reviews</a></li>
         <?php endif; ?>
 
       </ul>
