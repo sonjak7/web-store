@@ -14,10 +14,15 @@
             echo "<script type='text/javascript'> document.location = '../reviews.php'; </script>";
         }
         else{
-            $query = "INSERT INTO reviews(firstname, email_ID, feedback) VALUES ('$firstname', '$email_ID', '$feedback')";
-            $result = mysqli_query($conn, $query);
-	        if(!$result) {
-		        die("Query failed");
+            $query = "INSERT INTO reviews(firstname, email_ID, feedback) VALUES (?, ?, ?)";
+            $stmt = mysqli_stmt_init($conn); //Creating param query
+            mysqli_stmt_prepare($stmt, $query);
+            mysqli_stmt_bind_param($stmt, "sss", $firstname, $email_ID, $feedback);
+            if(!(mysqli_stmt_execute($stmt))){
+                $message_status = "unable to post review";
+                echo "<script type='text/javascript'>alert('$message_status');</script>";
+                echo "<script type='text/javascript'> document.location = '../reviews.php'; </script>";
+                exit();
             }
             $message_status = "review posted";
             echo "<script type='text/javascript'>alert('$message_status');</script>";

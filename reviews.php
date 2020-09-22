@@ -11,8 +11,8 @@
 		die("Query to show fields from table failed");
     }
     echo "<table id='reviews_table'><tr>
-    <td class='review_heading'>Name</td>
-    <td class='all_reviews'>Review</td></tr>";
+    <td class='review_heading'><b>Name</b></td>
+    <td class='all_reviews'><b>Review</b></td></tr>";
 
     while($row = mysqli_fetch_object($result)){
         echo "<tr>";
