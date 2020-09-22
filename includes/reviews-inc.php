@@ -5,13 +5,13 @@
 
   	if (isset($_POST['add_review'])) {
         $firstname = $_SESSION['firstname'];
-
         $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
 
         if($feedback == NULL){
-            $message_status = "Empty input field";
+            $message_status = "empty input field";
             echo "<script type='text/javascript'>alert('$message_status');</script>";
             echo "<script type='text/javascript'> document.location = '../reviews.php'; </script>";
+            exit();
         }
         else{
             $query = "INSERT INTO reviews(firstname, email_ID, feedback) VALUES (?, ?, ?)";

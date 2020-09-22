@@ -25,6 +25,7 @@
             echo "<input type='submit' name='delete_review' value='Delete' class='delete_review'>";
             echo "</td></form>";
         }
+        echo "</tr>";
     }
 	mysqli_free_result($result);
 	mysqli_close($conn);

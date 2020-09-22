@@ -7,7 +7,7 @@
 <div id="all">
     
     <div class="product" onclick="openDesc('product1Desc')">
-        <img src="product_images/laptop.jpg" class="image">
+        <img src="product_images/product1.jpg" class="image">
         <p class="product_name">product1</p>
         <p class="product_price">$499.99</p>
         <form action="includes/products-inc.php" method="POST">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="product" onclick="openDesc('product2Desc')">
-        <img src="product_images/headphones.jpg" class="image">
+        <img src="product_images/product2.jpg" class="image">
         <p class="product_name">product2</p>
         <p class="product_price">$79.99</p>
         <form action="includes/products-inc.php" method="POST">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="product" onclick="openDesc('product3Desc')">
-        <img src="product_images/television.png" class="image">
+        <img src="product_images/product3.png" class="image">
         <p class="product_name">product3</p>
         <p class="product_price">$550.00</p>
         <form action="includes/products-inc.php" method="POST">
@@ -58,7 +58,7 @@
     </div>
 
     <div class="product" onclick="openDesc('product4Desc')">
-        <img src="product_images/phone.png" class="image">
+        <img src="product_images/product4.png" class="image">
         <p class="product_name">product4</p>
         <p class="product_price">$299.00</p>
         <form action="includes/products-inc.php" method="POST">

@@ -45,18 +45,20 @@
 	// printing table contents
 	for($i=0; $i<$fields_num; $i++) {
 		$field = mysqli_fetch_field($result);
-		echo "<tr>";
-		echo "<td>$field->name</td>";
 		$price_index = $i * 2 + 2;		// will retrieve index of current product price in $cartArr
 		$quantity_index = $i * 2 + 1;	// will retrieve index of current quantity value in $cartArr
-		echo "<td>$$cartArr[$price_index]</td>"; 
-		echo "<td>$cartArr[$quantity_index]</td>";	
-		echo "<td>$$all_prices[$i]</td>";
-		echo "<td class='delete_cell'><form action='includes/deletes-inc.php' method='POST'>	
-		<input type='hidden' name='product_deleted' value='$field->name'>
-		<input type='submit' name='submit' value='Delete'>
-		</form></td>";	//delete button for product
-		echo "</tr>";
+		if($cartArr[$quantity_index] > 0){
+			echo "<tr>";
+			echo "<td>$field->name</td>";
+			echo "<td>$$cartArr[$price_index]</td>"; 
+			echo "<td>$cartArr[$quantity_index]</td>";	
+			echo "<td>$$all_prices[$i]</td>";
+			echo "<td class='delete_cell'><form action='includes/deletes-inc.php' method='POST'>	
+			<input type='hidden' name='product_deleted' value='$field->name'>
+			<input type='submit' name='submit' value='Delete'>
+			</form></td>";	//delete button for product
+			echo "</tr>";
+		}
 	}
 	
 	//PRINTS DATABASE ITEMS ALTOGETHER, USED FOR HORIZONTAL TABLE 

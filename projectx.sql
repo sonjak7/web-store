@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2020 at 11:23 PM
+-- Generation Time: Sep 23, 2020 at 12:01 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -44,7 +44,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`email_ID`, `product1`, `prod1_price`, `product2`, `prod2_price`, `product3`, `prod3_price`, `product4`, `prod4_price`) VALUES
-('sonjak@gmail.com', 2, 499.99, 0, 79.99, 0, 550, 0, 0),
+('sonjak@gmail.com', 2, 499.99, 0, 79.99, 1, 550, 2, 299),
 ('test@test.com', 0, 499.99, 0, 79.99, 0, 550, 0, 0);
 
 -- --------------------------------------------------------
@@ -66,7 +66,9 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`id`, `firstname`, `email_ID`, `feedback`) VALUES
 (33, 'sanjay', 'sonjak@gmail.com', 'good'),
-(35, 'test', 'test@test.com', 'bad');
+(35, 'test', 'test@test.com', 'bad'),
+(36, 'sanjay', 'sonjak@gmail.com', 'testing after security changes'),
+(37, 'sanjay', 'sonjak@gmail.com', 'final test');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
