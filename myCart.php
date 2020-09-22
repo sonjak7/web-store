@@ -54,7 +54,7 @@
 		echo "<td>$$all_prices[$i]</td>";
 		echo "<td class='delete_cell'><form action='includes/deletes-inc.php' method='POST'>	
 		<input type='hidden' name='product_deleted' value='$field->name'>
-		<input type='submit' name='submit' value='Delete' class='manage_cart' style='width: 80%'>
+		<input type='submit' name='submit' value='Delete'>
 		</form></td>";	//delete button for product
 		echo "</tr>";
 	}

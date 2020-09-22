@@ -14,7 +14,7 @@
             <label for="add_product1" class="ask_quant" onclick="noShow()">Quantity: </label>
             <input id="add_product1" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
             <input type="hidden" name="product_bought" value="product1">
-            <input id="the" class="manage_cart" type="submit" name="submit" value="Add to cart" onclick="noShow()">
+            <input id="the" type="submit" name="submit" value="Add to cart" onclick="noShow()">
         </form>
     </div>
     <div class="description" id="product1Desc">
@@ -31,7 +31,7 @@
             <label for="add_product2" class="ask_quant" onclick="noShow()">Quantity: </label>
             <input id="add_product2" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
             <input type="hidden" name="product_bought" value="product2">
-            <input class="manage_cart" type="submit" name="submit" value="Add to cart" onclick="noShow()">
+            <input type="submit" name="submit" value="Add to cart" onclick="noShow()">
         </form>
     </div>
     <div class="description" id="product2Desc">
@@ -48,7 +48,7 @@
             <label for="add_product3" class="ask_quant" onclick="noShow()">Quantity: </label>
             <input id="add_product3" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
             <input type="hidden" name="product_bought" value="product3">
-            <input class="manage_cart" type="submit" name="submit" value="Add to cart" onclick="noShow()">
+            <input type="submit" name="submit" value="Add to cart" onclick="noShow()">
         </form>
     </div>
     <div class="description" id="product3Desc">
@@ -65,7 +65,7 @@
             <label for="add_cell_product4" class="ask_quant" onclick="noShow()">Quantity: </label>
             <input id="add_cell_product4" name="quantity" type="number" value="0" min="0" class="quant" onclick="noShow()">
             <input type="hidden" name="product_bought" value="product4">
-            <input class="manage_cart" type="submit" name="submit" value="Add to cart" onclick="noShow()">
+            <input type="submit" name="submit" value="Add to cart" onclick="noShow()">
         </form>
     </div>
     <div class="description" id="product4Desc">
