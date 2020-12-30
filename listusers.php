@@ -8,7 +8,7 @@
 		die('Could not connect: ' . mysql_error());
 	}
 // Retrieve name of table selected
-	$query = "SELECT email_ID, password, firstname, lastname FROM User ";
+	$query = "SELECT email_ID, password, firstname, lastname FROM Users ";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {

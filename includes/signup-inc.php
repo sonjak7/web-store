@@ -8,6 +8,7 @@
 		$lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
 		$email_ID = mysqli_real_escape_string($conn, $_POST['email_ID']);
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
+		$isAdmin = 0; //FALSE
 
 		if($email_ID == NULL || $firstname == NULL || $lastname == NULL || $password == NULL){
 			$message_status = "Empty inputs";
@@ -23,7 +24,7 @@
 		}
 		else{
 			//Check to see if user already exists
-			$query = "SELECT * FROM User WHERE email_ID=?";
+			$query = "SELECT * FROM Users WHERE email_ID=?";
 			$stmt = mysqli_stmt_init($conn); //Creating param query
 			mysqli_stmt_prepare($stmt, $query);
 			mysqli_stmt_bind_param($stmt, "s", $email_ID);
@@ -40,10 +41,10 @@
 				$password = $password . $salt; //Salting the password
 				$password = hash('sha256', $password);
 
-				$query = "INSERT INTO User (email_ID, password, firstname, lastname) VALUES (?, ?, ?, ?)"; 
+				$query = "INSERT INTO Users (email_ID, password, firstname, lastname, isAdmin) VALUES (?, ?, ?, ?, ?)"; 
 				$stmt = mysqli_stmt_init($conn); //Creating param query
 				mysqli_stmt_prepare($stmt, $query);
-				mysqli_stmt_bind_param($stmt, "ssss", $email_ID, $password, $firstname, $lastname);
+				mysqli_stmt_bind_param($stmt, "sssss", $email_ID, $password, $firstname, $lastname, $isAdmin);
 				if(!(mysqli_stmt_execute($stmt))){
 					$message_status = "Creating new user failed";
 					echo "<script type='text/javascript'>alert('$message_status');</script>";
@@ -56,26 +57,27 @@
 					echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
 				}
 				
-				$q = 0;
-				$p1 = 499.99;
-				$p2 = 79.99;
-				$p3 = 550;
 
-				$cart_query = "INSERT INTO cart (email_ID, product1, prod1_price, product2, prod2_price, product3, prod3_price) VALUES (?, ?, ?, ?, ?, ?, ?)";
-				$stmt = mysqli_stmt_init($conn); //Creating param query
-				mysqli_stmt_prepare($stmt, $cart_query);
-				mysqli_stmt_bind_param($stmt, "sssssss", $email_ID, $q, $p1, $q, $p2, $q, $p3);
-				if(!(mysqli_stmt_execute($stmt))){
-					$message_status = "Creating new cart failed";
-					echo "<script type='text/javascript'>alert('$message_status');</script>";
-					echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
-					exit();
-				}
-				else{
-					//$message = "New cart successfully added";
-					//echo "<script type='text/javascript'>alert('$message');</script>";
-					//echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
-				}
+				// OLD CODE FOR CREATING USER'S CART
+				// $q = 0;
+				// $p1 = 499.99;
+				// $p2 = 79.99;
+				// $p3 = 550;
+				// $cart_query = "INSERT INTO cart (email_ID, product1, prod1_price, product2, prod2_price, product3, prod3_price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				// $stmt = mysqli_stmt_init($conn); //Creating param query
+				// mysqli_stmt_prepare($stmt, $cart_query);
+				// mysqli_stmt_bind_param($stmt, "sssssss", $email_ID, $q, $p1, $q, $p2, $q, $p3);
+				// if(!(mysqli_stmt_execute($stmt))){
+				// 	$message_status = "Creating new cart failed";
+				// 	echo "<script type='text/javascript'>alert('$message_status');</script>";
+				// 	echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+				// 	exit();
+				// }
+				// else{
+				// 	//$message = "New cart successfully added";
+				// 	//echo "<script type='text/javascript'>alert('$message');</script>";
+				// 	//echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+				// }
 			}	
 		}
 	}

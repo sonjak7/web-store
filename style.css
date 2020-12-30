@@ -1,6 +1,6 @@
 .main-wrapper{
-  margin: 0 auto;
-  width: 1000px;
+  margin-right: 20px;
+  margin-left: 100px;
   padding: 0;
 }
 
@@ -184,6 +184,7 @@ h1{
   color: black;
   font-size: 250%;
   text-align: center;
+  margin: 25px;
 }
 
 .search{
@@ -199,8 +200,10 @@ h1{
   text-decoration: underline;
 }
 
-.main-wrapper{
+.main-heading{
   text-align: center;
+  margin: 0 auto;
+  padding: 0;
 }
 
 #reviews_table{
@@ -213,19 +216,24 @@ h1{
 }
 
 .review_heading{
-  width: 10%;
+  width: 20%;
   border-right:2px solid rgb(0, 148, 59);
   padding: 1%
 }
 
 .all_reviews{
   padding: 1%;
-  width: 90%;
+  width: 80%;
 }
 
 .delete_review{
   width: 150% !important;
   padding: 15% !important;
+  background-color: rgb(204, 56, 56) !important;
+}
+
+.delete_review:hover{
+  background-color: rgb(158, 41, 41) !important;
 }
 
 #add_review{
@@ -310,16 +318,26 @@ form{
 }
 
 .product:hover{
-  background-color: rgb(247, 247, 247);
   cursor: pointer;
   border: 1px solid black;
+}
+
+.image_container{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+  width: 250px;
+  height: 200px;
+  border-radius: 5px;
 }
 
 .image{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .product_name{
@@ -333,8 +351,17 @@ form{
   font-style: italic;
 }
 
+.remove_product{
+  margin-top: 2px !important;
+  background-color: rgb(204, 56, 56) !important;
+}
+
+.remove_product:hover{
+  background-color: rgb(158, 41, 41) !important;
+}
+
 input[type="submit"]{
-  width: 80%;
+  width: 60%;
   background-color: rgb(0, 148, 59);
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -342,7 +369,7 @@ input[type="submit"]{
   padding: 5%;
   margin: 3%;
   border: none;
-  border-radius: 50px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
@@ -350,8 +377,27 @@ input[type="submit"]:hover{
   background-color: rgb(43, 128, 54);
 }
 
-.delete_cell{
+.mod_cell{
   background-color: rgb(233, 233, 233) !important;
+  width: 11%;
+}
+
+.edit{
+  width: 25% !important;
+  padding: 1.8% !important;
+  margin-left: 37.5% !important;
+  margin-right: 37.5% !important;
+  /* position: relative !important;
+  bottom: 20px; */
+}
+
+.delete_prod{
+  background-color: rgb(204, 56, 56) !important;
+  width: 90% !important;
+}
+
+.delete_prod:hover{
+  background-color: rgb(158, 41, 41) !important;
 }
 
 .quant{
@@ -402,4 +448,70 @@ input[type="submit"]:hover{
   position: relative;
   left: 4%;
   top: 14%;
+}
+
+.ask_prod{
+  color: black;
+  margin: 10px;
+}
+
+.add-prod{
+  margin: 10px;
+  width: 25%;
+  padding: 5px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+}
+
+#description{
+  position: relative;
+  top: 28px;
+  height: 40px;
+}
+
+#add_product{
+  padding: 35px;
+  width: 25%;
+  margin: 10px;
+  margin-top: 50px;
+}
+
+.ask_filter{
+  color: black;
+  margin-left: 30px;
+}
+
+.rad_filter{
+  color: black;
+  margin-right: 8px;
+  display: inline;
+}
+
+.filter_field{
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 8px;
+  margin: 10px;
+}
+
+#filter{
+  padding: 35px;
+  width: 25%;
+  margin: 10px;
+  margin-top: 35px;
+}
+
+.ship{
+  width: 175% !important;
+  padding: 15% !important;
+  background-color: rgb(0, 148, 59) !important;
+  border-radius: 14px !important;
+}
+
+.ship:hover{
+  background-color: rgb(43, 128, 54) !important;
 }

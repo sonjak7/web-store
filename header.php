@@ -6,7 +6,7 @@
 <html>
 <head>
   <title></title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -15,17 +15,21 @@
     <div class="main-wrapper">
       <ul>
         <li><a href="index.php">Home</a></li>
-        <?php if(isset($_SESSION['email_ID'])) : ?>
+        <?php if(isset($_SESSION['userID'])) : ?>
           <li><a href="products.php">Products</a></li>
           <li><a href="myCart.php">My Cart</a></li>
           <li><a href="reviews.php">Reviews</a></li>
+          <?php if($_SESSION['isAdmin'] == 1) : ?>
+            <li><a href="track-orders.php">Track Orders</a></li>
+            <li><a href="add-product.php">Add Product</a></li>
+            <li><a href="list-users.php">Show Users</a></li>     
+          <?php endif; ?>
         <?php endif; ?>
-
       </ul>
       <div class="nav-login">
         <?php
           /*Show logout button when logged in*/
-          if(isset($_SESSION['email_ID'])){
+          if(isset($_SESSION['userID'])){
             echo '<form action="includes/logout-inc.php" method="POST">
                   <button type="submit" name="submit" class="loginout">Logout</button>
                   </form>';
@@ -46,3 +50,4 @@
     </div>
   </nav>
 </header>
+<script src="products_script.js"></script>

@@ -1,129 +1,49 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Sep 23, 2020 at 12:01 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `projectx`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `email_ID` varchar(32) NOT NULL,
-  `product1` int(32) NOT NULL,
-  `prod1_price` double NOT NULL,
-  `product2` int(32) NOT NULL,
-  `prod2_price` double NOT NULL,
-  `product3` int(32) NOT NULL,
-  `prod3_price` double NOT NULL,
-  `product4` int(32) NOT NULL,
-  `prod4_price` double NOT NULL
+CREATE TABLE `Users` (
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email_ID` varchar(255) NOT NULL UNIQUE,
+  `password` varchar(360) NOT NULL,
+  `isAdmin` boolean NOT NULL,
+  PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart`
---
 
-INSERT INTO `cart` (`email_ID`, `product1`, `prod1_price`, `product2`, `prod2_price`, `product3`, `prod3_price`, `product4`, `prod4_price`) VALUES
-('sonjak@gmail.com', 2, 499.99, 0, 79.99, 1, 550, 2, 299),
-('test@test.com', 0, 499.99, 0, 79.99, 0, 550, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reviews`
---
-
-CREATE TABLE `reviews` (
-  `id` int(100) NOT NULL,
-  `firstname` varchar(32) NOT NULL,
-  `email_ID` varchar(32) NOT NULL,
-  `feedback` varchar(5000) NOT NULL
+CREATE TABLE `Products` (
+  `productID` int(11) NOT NULL AUTO_INCREMENT,
+  `productName` varchar(255) NOT NULL,
+  `price` float(11) NOT NULL,
+  `image_path` varchar(255),
+  `description` varchar(5000),
+  PRIMARY KEY (`productID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `reviews`
---
 
-INSERT INTO `reviews` (`id`, `firstname`, `email_ID`, `feedback`) VALUES
-(33, 'sanjay', 'sonjak@gmail.com', 'good'),
-(35, 'test', 'test@test.com', 'bad'),
-(36, 'sanjay', 'sonjak@gmail.com', 'testing after security changes'),
-(37, 'sanjay', 'sonjak@gmail.com', 'final test');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `firstname` varchar(32) NOT NULL,
-  `lastname` varchar(32) NOT NULL,
-  `email_ID` varchar(32) NOT NULL,
-  `password` varchar(360) NOT NULL
+-- TRACKS ALL RELATIONSHIPS BETWEEN USER AND PRODUCT, ACTS AS A CART AND A STORAGE FOR PURCHASED/SHIPPED PRODUCTS
+-- IF `isPurchased` IS FALSE, THEN PRODUCT IS IN USER'S CART
+-- IF `isPurchased` IS TURE, THEN PRODUCT HAS BEEN PURCHASED. `date` AND `time` OF PURCHASE IS THEN RECORDED, THIS
+--    DATA IS THEN ONLY VISIBLE TO ADMINISTRATORS
+CREATE TABLE `Users_Products` (
+  `orderID` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `isPurchased` boolean NOT NULL DEFAULT 0,
+  `date` date,
+  `isShipped` boolean NOT NULL DEFAULT 0,
+  PRIMARY KEY (`orderID`),
+  FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (`productID`) REFERENCES `Products` (`productID`)
+  ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `user`
---
 
-INSERT INTO `user` (`firstname`, `lastname`, `email_ID`, `password`) VALUES
-('sanjay', 'ram', 'sonjak@gmail.com', '67325a653234fc9f72d5138fd040b322f7d2dc38afe16ad7b9205625920027e8'),
-('test', 'person', 'test@test.com', '82470495a07350a07ff3e2d40bc4de6957c13b7132d852b6f4610c7842479cf6');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`email_ID`);
-
---
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`email_ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `reviews`
---
-ALTER TABLE `reviews`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `Reviews` (
+  `reviewID` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL, 
+  `feedback` varchar(5000) NOT NULL,
+  PRIMARY KEY (`reviewID`),
+  FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`)
+  ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
