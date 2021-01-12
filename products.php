@@ -34,7 +34,7 @@
         //product information/add to cart button
         echo "<div class='product' onclick='openDesc($key)'>
                 <p class='product_name'>$name</p>
-                <p class='product_price'>$price</p>      
+                <p class='product_price'>$$price</p>      
                 <div class='image_container'><img class='image' src='$image_path'></div>
                 <form action='includes/products-inc.php' method='POST'>
                  <label for='add' class='ask_quant' onclick='noShow()'>Quantity: </label>
